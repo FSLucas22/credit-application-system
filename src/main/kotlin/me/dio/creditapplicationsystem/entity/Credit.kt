@@ -13,7 +13,7 @@ import java.time.LocalDate
 import java.util.UUID
 
 @Entity
-data class Credit (
+class Credit (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
