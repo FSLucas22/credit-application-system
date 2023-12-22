@@ -30,7 +30,7 @@ class CreditResource(
         .findAllByCustomer(customerId)
         .map { CreditView(it) }
 
-    @GetMapping
+    @GetMapping("/{creditCode}")
     fun findByCreditCode(
         @PathVariable creditCode: UUID,
         @RequestParam customerId: Long
