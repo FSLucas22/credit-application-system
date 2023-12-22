@@ -4,14 +4,10 @@ import me.dio.creditapplicationsystem.dto.CreditDto
 import me.dio.creditapplicationsystem.dto.CreditView
 import me.dio.creditapplicationsystem.dto.CustomerCreditView
 import me.dio.creditapplicationsystem.service.CreditService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
-import java.util.UUID
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @RestController
 @RequestMapping("/api/credits")
@@ -19,25 +15,35 @@ class CreditResource(
     private val creditService: CreditService,
 ) {
     @PostMapping
-    fun saveCredit(@RequestBody creditDto: CreditDto): String {
+    fun saveCredit(@RequestBody creditDto: CreditDto): ResponseEntity<String> {
         val credit = creditService.save(creditDto.toEntity())
         val customer = credit.customer
-        return "Credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved!"
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body("Credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved!")
     }
 
     @GetMapping("/{customerId}")
-    fun findAllCustomerCredits(@RequestParam customerId: Long): List<CreditView> = creditService
-        .findAllByCustomer(customerId)
-        .map { CreditView(it) }
+    fun findAllCustomerCredits(
+        @RequestParam customerId: Long
+    ): ResponseEntity<List<CreditView>> = ResponseEntity
+        .status(HttpStatus.OK)
+        .body(creditService
+            .findAllByCustomer(customerId)
+            .map { CreditView(it) })
 
     @GetMapping("/{creditCode}")
     fun findByCreditCode(
         @PathVariable creditCode: UUID,
         @RequestParam customerId: Long
-    ): CustomerCreditView = CustomerCreditView(
-            creditService.findByCreditCode(
-                creditCode = creditCode,
-                customerId = customerId,
+    ): ResponseEntity<CustomerCreditView> = ResponseEntity
+        .status(HttpStatus.OK)
+        .body(
+            CustomerCreditView(
+                creditService.findByCreditCode(
+                    creditCode = creditCode,
+                    customerId = customerId,
+                )
             )
         )
 }
