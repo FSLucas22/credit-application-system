@@ -17,9 +17,8 @@ class CreditResource(
     @PostMapping
     fun saveCredit(@RequestBody creditDto: CreditDto): ResponseEntity<String> {
         val credit = creditService.save(creditDto.toEntity())
-        val customer = credit.customer
         return ResponseEntity
-            .status(HttpStatus.OK)
+            .status(HttpStatus.CREATED)
             .body("Credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved!")
     }
 
