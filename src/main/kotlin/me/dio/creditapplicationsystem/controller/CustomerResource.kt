@@ -1,5 +1,6 @@
 package me.dio.creditapplicationsystem.controller
 
+import jakarta.validation.Valid
 import me.dio.creditapplicationsystem.dto.CustomerDto
 import me.dio.creditapplicationsystem.dto.CustomerUpdateDto
 import me.dio.creditapplicationsystem.dto.CustomerView
@@ -14,7 +15,7 @@ class CustomerResource(
     private val customerService: CustomerService
 ) {
     @PostMapping
-    fun saveCustomer(@RequestBody customerDto: CustomerDto): ResponseEntity<String> {
+    fun saveCustomer(@RequestBody @Valid customerDto: CustomerDto): ResponseEntity<String> {
         val customer = customerService.save(customerDto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
             .body("Customer ${customer.email} saved")
