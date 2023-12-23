@@ -23,9 +23,9 @@ class CreditResource(
             .body("Credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved!")
     }
 
-    @GetMapping("/{customerId}")
+    @GetMapping
     fun findAllCustomerCredits(
-        @RequestParam customerId: Long
+        @RequestParam(value = "customerId") customerId: Long
     ): ResponseEntity<List<CreditView>> = ResponseEntity
         .status(HttpStatus.OK)
         .body(creditService
@@ -35,7 +35,7 @@ class CreditResource(
     @GetMapping("/{creditCode}")
     fun findByCreditCode(
         @PathVariable creditCode: UUID,
-        @RequestParam customerId: Long
+        @RequestParam(value = "customerId") customerId: Long
     ): ResponseEntity<CustomerCreditView> = ResponseEntity
         .status(HttpStatus.OK)
         .body(
