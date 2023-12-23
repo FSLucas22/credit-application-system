@@ -3,7 +3,6 @@ package me.dio.creditapplicationsystem.dto
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.NotNull
-import jakarta.validation.constraints.PositiveOrZero
 import me.dio.creditapplicationsystem.entity.Address
 import me.dio.creditapplicationsystem.entity.Customer
 import org.hibernate.validator.constraints.br.CPF
@@ -17,7 +16,6 @@ data class CustomerDto (
     @field:CPF(message = "invalid cpf") val cpf: String,
 
     @field:NotNull(message = "income cannot be null")
-    @field:PositiveOrZero(message = "income must be positive or zero")
     val income: BigDecimal,
 
     @field:NotEmpty(message = "email cannot be empty")
