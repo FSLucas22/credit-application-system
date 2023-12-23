@@ -1,0 +1,1 @@
+ALTER TABLE credit ALTER COLUMN day_first_stallment RENAME TO day_first_installment;

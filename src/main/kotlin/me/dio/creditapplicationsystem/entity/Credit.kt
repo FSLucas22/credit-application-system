@@ -22,7 +22,7 @@ class Credit (
 
     @Column(nullable = false) val creditValue: BigDecimal = BigDecimal.ZERO,
 
-    @Column(nullable = false) val dayFirstStallment: LocalDate,
+    @Column(nullable = false) val dayFirstInstallment: LocalDate,
 
     @Column(nullable = false) val numberOfInstallments: Int = 0,
 

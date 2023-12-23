@@ -8,13 +8,13 @@ import java.time.LocalDate
 data class CreditDto (
     val creditValue: BigDecimal,
     val dayFirstInstallment: LocalDate,
-    val numberOfStallments: Int,
+    val numberOfInstallments: Int,
     val customerId: Long,
 ) {
     fun toEntity(): Credit = Credit(
         creditValue = creditValue,
-        dayFirstStallment = dayFirstInstallment,
-        numberOfInstallments = numberOfStallments,
+        dayFirstInstallment = dayFirstInstallment,
+        numberOfInstallments = numberOfInstallments,
         customer = Customer(id = customerId)
     )
 }

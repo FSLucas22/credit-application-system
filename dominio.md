@@ -22,7 +22,7 @@ criar uma API Rest com Spring Boot e Kotlin, com as seguintes funcionalidades:
     **b. Response:** sem retorno
 * ## Soliticação de Empréstimo (Credit):
     * ### Cadastrar:
-      **a. Request:** creditValue, dayFirstOfInstallment, numberOfInstallment, customerId
+      **a. Request:** creditValue, dayFirstOfInstallment, numberOfInstallments, customerId
 
       **b. Response:** String
     * ### Listar todas as solicitações de empréstimo de um cliente:
