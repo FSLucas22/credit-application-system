@@ -18,6 +18,6 @@ class CustomerServiceImpl(
         }
 
     override fun delete(id: Long) {
-        customerRepository.deleteById(id)
+        with(findById(id), customerRepository::delete)
     }
 }
