@@ -45,4 +45,18 @@ class RestExceptionHandler {
             ), HttpStatus.CONFLICT
         )
     }
+
+    @ExceptionHandler(BusinessException::class)
+    fun handlerValidException(ex: BusinessException): ResponseEntity<ExceptionDetails> {
+        val errors: MutableMap<String, String?> = mutableMapOf(ex.cause.toString() to ex.message)
+        return ResponseEntity(
+            ExceptionDetails(
+                title = "Bad Request! Consult the documentation",
+                timestamp = LocalDateTime.now(),
+                status = HttpStatus.BAD_REQUEST.value(),
+                exception = ex.javaClass.toString(),
+                details = errors,
+            ), HttpStatus.BAD_REQUEST
+        )
+    }
 }
