@@ -1,6 +1,8 @@
 package me.dio.creditapplicationsystem.dto
 
 import jakarta.validation.constraints.Future
+import jakarta.validation.constraints.Max
+import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Positive
 import me.dio.creditapplicationsystem.entity.Credit
@@ -18,6 +20,7 @@ data class CreditDto (
 
     @field:NotNull(message = "numberOfInstallments cannot be null")
     @field:Positive(message = "numberOfInstallments must be positive")
+    @field:Max(value = 48, message = "numberOfInstallments cannot be bigger than 48")
     val numberOfInstallments: Int,
 
     @field:NotNull(message = "customerId cannot be nul")
