@@ -1,9 +1,11 @@
 package me.dio.creditapplicationsystem.controller
 
 import jakarta.validation.Valid
+import me.dio.creditapplicationsystem.controller.documentation.ICreditResource
 import me.dio.creditapplicationsystem.dto.CreditDto
 import me.dio.creditapplicationsystem.dto.CreditView
 import me.dio.creditapplicationsystem.dto.CustomerCreditView
+import me.dio.creditapplicationsystem.dto.ListCreditView
 import me.dio.creditapplicationsystem.service.CreditService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -12,11 +14,11 @@ import java.util.*
 
 @RestController
 @RequestMapping("/api/credits")
-class CreditResource(
+class CreditResource (
     private val creditService: CreditService,
-) {
+): ICreditResource {
     @PostMapping
-    fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<String> {
+    override fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<String> {
         val credit = creditService.save(creditDto.toEntity())
         return ResponseEntity
             .status(HttpStatus.CREATED)
@@ -24,16 +26,16 @@ class CreditResource(
     }
 
     @GetMapping
-    fun findAllCustomerCredits(
+    override fun findAllCustomerCredits(
         @RequestParam(value = "customerId") customerId: Long
-    ): ResponseEntity<List<CreditView>> = ResponseEntity
+    ): ResponseEntity<ListCreditView> = ResponseEntity
         .status(HttpStatus.OK)
-        .body(creditService
+        .body(ListCreditView(creditService
             .findAllByCustomer(customerId)
-            .map { CreditView(it) })
+            .map { CreditView(it) }))
 
     @GetMapping("/{creditCode}")
-    fun findByCreditCode(
+    override fun findByCreditCode(
         @PathVariable creditCode: UUID,
         @RequestParam(value = "customerId") customerId: Long
     ): ResponseEntity<CustomerCreditView> = ResponseEntity
