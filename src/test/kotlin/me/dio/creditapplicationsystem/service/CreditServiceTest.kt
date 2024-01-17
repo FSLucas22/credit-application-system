@@ -12,17 +12,15 @@ import me.dio.creditapplicationsystem.enumeration.Status
 import me.dio.creditapplicationsystem.exception.BusinessException
 import me.dio.creditapplicationsystem.repository.CreditRepository
 import me.dio.creditapplicationsystem.service.impl.CreditServiceImpl
-import org.assertj.core.api.Assert
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.test.context.ActiveProfiles
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.UUID
 import kotlin.random.Random
 
-@ActiveProfiles("test")
+// @ActiveProfiles("test") - Não necessário porque não precisa subir o contexto do spring
 @ExtendWith(MockKExtension::class)
 class CreditServiceTest {
 

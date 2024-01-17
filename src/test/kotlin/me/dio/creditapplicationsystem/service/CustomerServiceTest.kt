@@ -15,12 +15,11 @@ import me.dio.creditapplicationsystem.service.impl.CustomerServiceImpl
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.test.context.ActiveProfiles
 import java.math.BigDecimal
 import java.util.*
 import kotlin.random.Random
 
-@ActiveProfiles("test")
+//@ActiveProfiles("test") - Não necessário pois não precisa subir o contexto do spring
 @ExtendWith(MockKExtension::class)
 class CustomerServiceTest {
     @MockK lateinit var customerRepository: CustomerRepository
