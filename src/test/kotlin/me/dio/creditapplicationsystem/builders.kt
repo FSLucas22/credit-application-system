@@ -9,7 +9,7 @@ import java.time.LocalDate
 import java.util.*
 
 fun buildCredit(
-    id: Long = 1L,
+    id: Long? = 1L,
     creditCode: UUID = UUID.randomUUID(),
     creditValue: BigDecimal = BigDecimal.valueOf(10000.0),
     dayFirstInstallment: LocalDate = LocalDate.now(),
@@ -35,7 +35,7 @@ fun buildCustomer(
     zipCode: String = "12345",
     street: String = "Rua do Lucas",
     income: BigDecimal = BigDecimal.valueOf(10000.0),
-    id: Long = 1L,
+    id: Long? = 1L,
 ) = Customer(
     firstName = firstName,
     lastName = lastName,

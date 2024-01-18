@@ -18,7 +18,7 @@ class Credit (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    @Column(nullable = false, unique = true) val creditCode: UUID = UUID.randomUUID(),
+    @Column(nullable = false, unique = true) var creditCode: UUID = UUID.randomUUID(),
 
     @Column(nullable = false) val creditValue: BigDecimal = BigDecimal.ZERO,
 
