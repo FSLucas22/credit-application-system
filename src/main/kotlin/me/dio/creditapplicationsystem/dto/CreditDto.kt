@@ -1,8 +1,7 @@
 package me.dio.creditapplicationsystem.dto
 
-import jakarta.validation.constraints.Future
+import jakarta.validation.constraints.FutureOrPresent
 import jakarta.validation.constraints.Max
-import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Positive
 import me.dio.creditapplicationsystem.entity.Credit
@@ -15,7 +14,7 @@ data class CreditDto (
     @field:Positive(message = "creditValue must be a positive")
     val creditValue: BigDecimal,
 
-    @field:Future(message = "dayFirstInstallment must be a future date")
+    @field:FutureOrPresent(message = "dayFirstInstallment must be a future date")
     val dayFirstInstallment: LocalDate,
 
     @field:NotNull(message = "numberOfInstallments cannot be null")

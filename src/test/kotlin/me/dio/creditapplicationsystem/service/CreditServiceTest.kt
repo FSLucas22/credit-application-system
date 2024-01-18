@@ -5,8 +5,8 @@ import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.verify
-import me.dio.creditapplicationsystem.buildCredit
-import me.dio.creditapplicationsystem.buildCustomer
+import me.dio.creditapplicationsystem.builders.buildCredit
+import me.dio.creditapplicationsystem.builders.buildCustomer
 import me.dio.creditapplicationsystem.exception.BusinessException
 import me.dio.creditapplicationsystem.repository.CreditRepository
 import me.dio.creditapplicationsystem.service.impl.CreditServiceImpl

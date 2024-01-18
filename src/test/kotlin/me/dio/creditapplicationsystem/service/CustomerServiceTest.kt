@@ -7,7 +7,7 @@ import io.mockk.junit5.MockKExtension
 import io.mockk.just
 import io.mockk.runs
 import io.mockk.verify
-import me.dio.creditapplicationsystem.buildCustomer
+import me.dio.creditapplicationsystem.builders.buildCustomer
 import me.dio.creditapplicationsystem.entity.Customer
 import me.dio.creditapplicationsystem.exception.BusinessException
 import me.dio.creditapplicationsystem.repository.CustomerRepository

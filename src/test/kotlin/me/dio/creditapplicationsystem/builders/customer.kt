@@ -1,31 +1,9 @@
-package me.dio.creditapplicationsystem
+package me.dio.creditapplicationsystem.builders
 
 import me.dio.creditapplicationsystem.dto.CustomerDto
 import me.dio.creditapplicationsystem.entity.Address
-import me.dio.creditapplicationsystem.entity.Credit
 import me.dio.creditapplicationsystem.entity.Customer
-import me.dio.creditapplicationsystem.enumeration.Status
 import java.math.BigDecimal
-import java.time.LocalDate
-import java.util.*
-
-fun buildCredit(
-    id: Long? = 1L,
-    creditCode: UUID = UUID.randomUUID(),
-    creditValue: BigDecimal = BigDecimal.valueOf(10000.0),
-    dayFirstInstallment: LocalDate = LocalDate.now(),
-    numberOfInstallments: Int = 4,
-    status: Status = Status.IN_PROGRESS,
-    customer: Customer = buildCustomer()
-) = Credit(
-    id = id,
-    creditCode = creditCode,
-    creditValue = creditValue,
-    dayFirstInstallment = dayFirstInstallment,
-    numberOfInstallments = numberOfInstallments,
-    status = status,
-    customer = customer
-)
 
 fun buildCustomer(
     firstName: String = "Lucas",

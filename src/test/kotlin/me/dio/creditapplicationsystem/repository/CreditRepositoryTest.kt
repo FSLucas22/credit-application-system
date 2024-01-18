@@ -1,7 +1,7 @@
 package me.dio.creditapplicationsystem.repository
 
-import me.dio.creditapplicationsystem.buildCredit
-import me.dio.creditapplicationsystem.buildCustomer
+import me.dio.creditapplicationsystem.builders.buildCredit
+import me.dio.creditapplicationsystem.builders.buildCustomer
 import me.dio.creditapplicationsystem.entity.Credit
 import me.dio.creditapplicationsystem.entity.Customer
 import org.assertj.core.api.Assertions
@@ -33,16 +33,20 @@ class CreditRepositoryTest {
         val creditCode1 = UUID.fromString("65becc00-9d9b-4080-a8d2-88bd154580f1")
         val creditCode2 = UUID.fromString("50f00e5d-1954-45a6-83bf-f2a9d91225a9")
 
-        credit1 = testEntityManager.persist(buildCredit(
+        credit1 = testEntityManager.persist(
+            buildCredit(
             id = null,
             creditCode = creditCode1,
             customer = customer
-        ))
-        credit2 = testEntityManager.persist(buildCredit(
+        )
+        )
+        credit2 = testEntityManager.persist(
+            buildCredit(
             id = null,
             creditCode = creditCode2,
             customer = customer
-        ))
+        )
+        )
     }
 
     @Test
@@ -82,11 +86,13 @@ class CreditRepositoryTest {
     @Test
     fun `Should not return credit of another customer`() {
         // Given
-        val anotherCustomer = testEntityManager.persist(buildCustomer(
+        val anotherCustomer = testEntityManager.persist(
+            buildCustomer(
             id = null,
             cpf = "004.339.580-57",
             email = "another@test.com"
-        ))
+        )
+        )
         val anotherCredit = testEntityManager.persist(buildCredit(id = null, customer = anotherCustomer))
 
         // When

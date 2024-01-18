@@ -1,8 +1,8 @@
 package me.dio.creditapplicationsystem.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import me.dio.creditapplicationsystem.buildCustomer
-import me.dio.creditapplicationsystem.buildCustomerDto
+import me.dio.creditapplicationsystem.builders.buildCustomer
+import me.dio.creditapplicationsystem.builders.buildCustomerDto
 import me.dio.creditapplicationsystem.dto.CustomerDto
 import me.dio.creditapplicationsystem.dto.CustomerUpdateDto
 import me.dio.creditapplicationsystem.repository.CustomerRepository
