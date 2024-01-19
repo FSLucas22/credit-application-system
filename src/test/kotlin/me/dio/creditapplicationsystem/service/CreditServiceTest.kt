@@ -78,6 +78,7 @@ class CreditServiceTest {
         )
 
         every { creditRepository.findAllByCustomer(fakeCustomerId) } returns fakeCredits
+        every { customerService.findById(fakeCustomer.id!!) } returns fakeCustomer
 
         // When
         val actual = creditService.findAllByCustomer(fakeCustomerId)

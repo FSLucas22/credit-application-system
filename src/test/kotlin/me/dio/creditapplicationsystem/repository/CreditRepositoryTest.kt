@@ -30,23 +30,21 @@ class CreditRepositoryTest {
 
     @BeforeEach fun setup() {
         customer = testEntityManager.persist(buildCustomer(id=null))
-        val creditCode1 = UUID.fromString("65becc00-9d9b-4080-a8d2-88bd154580f1")
-        val creditCode2 = UUID.fromString("50f00e5d-1954-45a6-83bf-f2a9d91225a9")
+        creditCode1 = UUID.fromString("65becc00-9d9b-4080-a8d2-88bd154580f1")
+        creditCode2 = UUID.fromString("50f00e5d-1954-45a6-83bf-f2a9d91225a9")
 
         credit1 = testEntityManager.persist(
             buildCredit(
             id = null,
             creditCode = creditCode1,
             customer = customer
-        )
-        )
+        ))
         credit2 = testEntityManager.persist(
             buildCredit(
             id = null,
             creditCode = creditCode2,
             customer = customer
-        )
-        )
+        ))
     }
 
     @Test

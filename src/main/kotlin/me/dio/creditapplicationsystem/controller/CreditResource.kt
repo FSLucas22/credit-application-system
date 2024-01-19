@@ -18,11 +18,11 @@ class CreditResource (
     private val creditService: CreditService,
 ): ICreditResource {
     @PostMapping
-    override fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<String> {
+    override fun saveCredit(@RequestBody @Valid creditDto: CreditDto): ResponseEntity<CreditView> {
         val credit = creditService.save(creditDto.toEntity())
         return ResponseEntity
             .status(HttpStatus.CREATED)
-            .body("Credit ${credit.creditCode} - Customer ${credit.customer?.firstName} saved!")
+            .body(CreditView(credit))
     }
 
     @GetMapping

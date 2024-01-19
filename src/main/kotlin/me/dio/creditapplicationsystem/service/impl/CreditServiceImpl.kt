@@ -23,8 +23,12 @@ class CreditServiceImpl(
         return creditRepository.save(credit)
     }
 
-    override fun findAllByCustomer(customerId: Long): List<Credit> = creditRepository
-        .findAllByCustomer(customerId)
+    override fun findAllByCustomer(customerId: Long): List<Credit> {
+        customerService.findById(customerId)
+
+        return creditRepository
+            .findAllByCustomer(customerId)
+    }
 
     override fun findByCreditCode(customerId: Long, creditCode: UUID): Credit {
         val credit = creditRepository

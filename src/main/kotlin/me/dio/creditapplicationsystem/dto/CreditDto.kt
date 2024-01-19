@@ -11,10 +11,10 @@ import java.time.LocalDate
 
 data class CreditDto (
     @field:NotNull(message = "creditValue cannot be null")
-    @field:Positive(message = "creditValue must be a positive")
+    @field:Positive(message = "creditValue must be positive")
     val creditValue: BigDecimal,
 
-    @field:FutureOrPresent(message = "dayFirstInstallment must be a future date")
+    @field:FutureOrPresent(message = "dayFirstInstallment must be a future or present date")
     val dayFirstInstallment: LocalDate,
 
     @field:NotNull(message = "numberOfInstallments cannot be null")

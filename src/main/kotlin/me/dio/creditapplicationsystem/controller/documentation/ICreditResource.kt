@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
 import me.dio.creditapplicationsystem.dto.CreditDto
+import me.dio.creditapplicationsystem.dto.CreditView
 import me.dio.creditapplicationsystem.dto.CustomerCreditView
 import me.dio.creditapplicationsystem.dto.ListCreditView
 import me.dio.creditapplicationsystem.exception.ExceptionDetails
@@ -21,8 +22,8 @@ interface ICreditResource {
             description = "Credit created successfully",
             content = [
                 Content(
-                    mediaType = "string",
-                    schema = Schema(implementation = String::class),
+                    mediaType = "application/json",
+                    schema = Schema(implementation = CreditView::class),
                 )
             ]
         ),
@@ -38,7 +39,7 @@ interface ICreditResource {
         )
     )
     @Tag(name = "Credits", description = "Operations related to credit management")
-    fun saveCredit(creditDto: CreditDto): ResponseEntity<String>
+    fun saveCredit(creditDto: CreditDto): ResponseEntity<CreditView>
 
     @Operation(summary = "Lista todos os créditos de um cliente")
     @ApiResponses(
