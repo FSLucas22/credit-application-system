@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
-import me.dio.creditapplicationsystem.dto.CustomerCreditView
 import me.dio.creditapplicationsystem.dto.CustomerDto
 import me.dio.creditapplicationsystem.dto.CustomerUpdateDto
 import me.dio.creditapplicationsystem.dto.CustomerView
@@ -75,6 +74,16 @@ interface ICustomerResource {
         ApiResponse(
             responseCode = "400",
             description = "Bad Request",
+            content = [
+                Content(
+                    mediaType = "application/json",
+                    schema = Schema(implementation = ExceptionDetails::class)
+                )
+            ]
+        ),
+        ApiResponse(
+            responseCode = "409",
+            description = "Conflict. Customer with same cpf or email found",
             content = [
                 Content(
                     mediaType = "application/json",
